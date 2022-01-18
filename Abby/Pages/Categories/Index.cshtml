@@ -1,0 +1,42 @@
+﻿@page
+@model Abby.Pages.Categories.IndexModel
+@{
+}
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Categories list</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-page="Create" class="btn btn-success"><i class="bi bi-file-earmark-plus"></i>&nbsp;Create category</a>
+        </div>
+    </div>
+    <br /> <br />
+
+    <table class="table table-bordered table-striped" style="width:100%">
+        <thead class=text-center>
+            <tr>
+                <th><label asp-for=Categories.FirstOrDefault().Name></label></th>
+                <th><label asp-for=Categories.FirstOrDefault().DisplayOrder></label></th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var obj in Model.Categories)
+            {
+                <tr>
+                    <td width="40%">@obj.Name</td>
+                    <td width="10%" class=text-center>@obj.DisplayOrder</td>
+                    <td class=text-center>
+                        <div class="btn-group w-75" role="group">
+                            <a class="btn btn-primary mx-2" asp-page="Edit" asp-route-id="@obj.Id"><i class="bi bi-pencil-square"></i>&nbsp;Edit</a>
+                            <a class="btn btn-danger mx-2" asp-page="Delete" asp-route-id="@obj.Id"><i class="bi bi-trash"></i>&nbsp;Delete</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
